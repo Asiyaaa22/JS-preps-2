@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JAVA-SCRIPT</h1>
+    <h2>DAY-1</h2>
+    <sub>`==` vs `===`</sub>
+     <p>In javascript,we use the operators such as == and === to compare the values.
+        The == operator is used to compare the values of two operands.Whereas, === operator is also used to compare the values of two operands.
+        == returns true if the operands are equal, and false if they are not.<br>As it performs a type coercion, which means that it converts the operands to the same type before making the comparison. 
+        on the other hand, does not perform type coercion. It compares the value and the type of the operands, and only returns true if both the value and the type are the same.
+    </p>
+    <sub>SPREAD-OPERATOR:</sub>
+    <P>The spread operator is an syntax in JavaScript that allows an iterable such as an array or string to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected.<br>
+    It is basically denoted by(...)<br>
+    eg:<pre>
+        const array1 = [1, 2, 3];
+        const array2 = [4, 5, 6];
+        const array3 = [...array1, ...array2];
+ 
+    </pre></P>
+    <sub>VAR, LET, CONST</sub>
+    <p>In JavaScript, var, let, and const are three ways to declare variables.
+        <ol><sub>VAR</sub>
+        <li>`Var` is the oldest and most widely used keyword to declare variables in JavaScript. </li>
+        <li>Variables declared with var are function-scoped, which means that they are accessible within the function in which they are declared</li>
+        <li>If a var variable is not declared within a function, it is considered to be globally scoped and is accessible from anywhere in the code.</li>
+        <sub>Let</sub>
+        <ul>
+        <li>`Let` is introduced in ECMAScript 6 (ES6)</li>
+        <li>Variables declared with let are block-scoped, which means that they are only accessible within the block in which they are declared. </li>
+        <li>It should be used when the value of a variable needs to be reassigned</li>
+        <sub>Const</sub>
+        <ul>
+        <li>`Const` is also a keyword to declare variables in JavaScript that was introduced in ES6.</li>
+        <li>Variables declared with const are read-only and cannot be reassigned.</li>
+        <li>Generally recommended to use const whenever possible, because it helps to prevent accidental reassignments and makes the code easier to understand.</li>
+        </ul></ul>
+    </ol>
+</p>
+<sub>EXECUTION-CONTEXT</sub>
+<p>In JavaScript, every time a block of code is run, an execution context is created to provide a context for the code to execute in.<br>An execution context is a space in which code is executed. 
+<p>There are two types of execution contexts in JavaScript: global execution context and function execution context.<br><br>
+Global execution context is created when the JavaScript code is first run. It represents the default execution context for the code, and it is created for the global scope, which is the top-most scope in the code.<br>
+    The local scope is created when the function is called and is destroyed when the function returns.</p>
+    <ul><li>The scope chain: a list of scopes that are used to determine the value of variables and references.
+        <li>The variable object: a collection of all variables, function declarations, and function arguments that are defined in the current execution context.</li>
+       <li> The this value: a reference to the object that is used as the context for the current code.</li></ul>
+</p>
+<p>The execution context is important because it determines the value of variables and the meaning of this in the code. It also determines the scope chain, which is used to resolve variable references. When a function is called, a new execution context is created for the function and is pushed onto the top of the execution context stack. When the function returns, the execution context is popped off the stack and the previous execution context is restored.</p>
+<sub>FIRST-CLASS FUNCTIONS</sub>
+<p>In JavaScript the functions are first class functions meaning we can store them in variable, objects and array. The higher order functions can take function, return them or do both.<br>When functions in that language are treated like any other variable</p>
+<sub>CLOSURES</sub>
+<p> a closure is a function that refers to variables from an enclosing scope. It is a technique that allows a function to access and manipulate variables that are defined in an outer function even after the outer function has completed execution.
+    <pre>function outerFunction(x) {
+        let y = x + 1;
+      
+        function innerFunction() {
+          console.log(y);
+        }
+      
+        return innerFunction;
+      }
+      
+      let closure = outerFunction(1);
+      closure(); 
+ // output prints 2</pre>
+</p>
+<sub>CALL(),APPLY(),BIND()</sub>
+<p>In JavaScript, the call and apply methods are used to invoke a function or method with a specific this value and arguments. <br>The bind method is used to create a new function with a specific this value.</p>
+<h4>NOTE
+    <P>These methods do not actually execute the function, they only create a new function with the specified this value or invoke the function with the specified this value and arguments. To actually execute the function, you need to call the function.</P>
+</h4>
+<pre>function greet(greeting) {
+    console.log(greeting + ' ' + this.name);
+  }
+  
+  const person = { name: 'Damon' };
+  
+  greet.call(person, 'Hello');  // Output: "Hello Damon"
+  greet.apply(person, ['Hello']);  // Output: "Hello Damon"
+  
+  const greetMe = greet.bind(person, 'Hello');
+  greetMe();  // Output: "Hello Damon"
+  </pre>
+
+  <h2>DAY-2</h2>
+  <h3>PHASES OF EXECUTION</h3><br>
+  <p>There are two phases of execution for a program: the creation phase and the execution phase.</p><br>
+   <sub>Creation Phase:</sub>
+   <p>The function is created and the JavaScript engine sets up the function's environment, which includes the function's scope and the variables that are available within the function. The function's code is also parsed and compiled, but it is not yet executed.</p>
+   <sub>Execution Phase</sub>
+   <br>
+    <p>During the execution phase, the function is actually invoked and its code is executed. This is when the function's arguments are passed and the function's body is executed.<br>The creation phase and the execution phase are distinct and occur at different times. The creation phase occurs when the function is defined, while the execution phase occurs when the function is called.</p>
+    <pre>
+        function hi(hey) {
+        console.log(hey + ' ' + this.name);
+      }
+      const person = { name: 'steve' };
+      // The function is created during the creation phase,but it is not yet executed
+      // The function is executed during the execution phase and the value of this is set to person
+      hi.call(person, 'Hello');  
+      // Output: "Hello steve"</pre>
+
+      <h3>OBJECTS</h3>
+      <p>In JavaScript, an object is a collection of properties, where a property is an association between a name (or key) and a value. Objects are used to store and organize data, and can be used to represent real-world entities like a person, a bank account, or a computer.
+        <pre>
+        const person = {
+          name: 'Gabriel',
+          age: 30,
+          gender: 'male',
+          location: 'chicago',
+          speak: function() {
+            console.log(`Hi, my name is ${this.name} and I am ${this.age} years old.`);
+          }
+        };
+        console.log(person.name);  // Output: "Gabriel"
+        console.log(person['age']);  // Output: 30
+        </pre>
+        <p> In this above example, name, age, gender, and location are properties of the person object. The speak property is a function, also known as a method, which can be invoked by calling person.speak().
+        <br> Properties of an object can be accessed using dot notation (e.g. object.property) or bracket notation (e.g. object['property']).<br>Objects are a powerful and versatile data type in JavaScript, and are used in many different contexts, including as arguments and return values of functions, and as values in arrays and other objects.</p>
+   
+        <h3>FUNCTION CONSTRUCTORS</h3>
+           <p>A constructor is a special kind of function that is used to create and initialize objects. Constructors are defined using the new keyword and are invoked using the new operator.<br>Constructor functions are a useful way to create objects with a specific set of properties and methods. They are especially useful when you need to create multiple objects with the same structure.</p>
+           <pre>
+            function Car(make, model) {
+            this.make = make;
+            this.model = model;
+          }
+          let myCar = new Car("suv", "Mercedes G-wagon");
+          console.log(myCar.make); 
+          console.log(myCar.model); 
+        </pre>
+
+        <h3>CALLBACK FUNCTIONS</h3>
+        <p>A Callback function is a function that is passed as an argument to another function and is executed after some kind of event or operation has completed. </p>
+        <p>Callback functions are a powerful and flexible feature of JavaScript, and they are used in many different contexts. </p>
+        <p>They allow you to write code that is executed after an event or operation has completed, and they provide a way to handle asynchronous operations in a structured and predictable way.</p>
+        
+           
+        <pre>
+            function doSomething(callback) { <!-- // Perform some operation -->
+            console.log("Operation completed");<!-- // Call the callback function -->
+            callback();
+          }<!-- // Define the callback function -->
+          function callback() {
+            console.log("Callback function called");
+          }<!-- // Call the doSomething function and pass the callback function as an argument -->
+          doSomething(callback);
+          
+          // Output:
+          // Operation completed
+          // Callback function called
+          </pre>
+    <h3>PROTOTYPES</h3>
+    <ul>
+        <li>The prototype is a property of a function that is used to define the properties and methods that will be shared by all objects created using that function as a constructor. </li>
+        <li>When you create an object using a constructor function, JavaScript automatically creates a prototype object for that constructor. </li>
+        <li>You can access the prototype of a constructor function using the [constructor.prototype] syntax.</li>
+    </ul>
+    <h3>PROTOTYPE CHAIN</h3>
+    <p>Prototype chaining, also known as prototype inheritance, is a way for objects to inherit properties and methods from other objects in JavaScript.</p>
+    <p>Prototype chaining is a powerful mechanism that allows you to create complex object hierarchies and reuse code in your applications.</p>
+    
+    <h3>INHERITANCE USING FUNCTION CONSTRUCTORS</h3>
+    <p>In JavaScript, you can use function constructors and the prototype chain to create an inheritance relationship between objects. This allows you to create a parent object, and then define child objects that inherit the properties and methods of the parent object.</p>
+    
+    <pre>
+        <!-- // Define the base object -->
+        function Animal(name) {
+          this.name = name;
+        } <!-- // Define a method on the prototype -->
+        Animal.prototype.sayHello = function() {
+          console.log(`Hello, I am ${this.name}`);
+        }<!-- // Define a child object -->
+        function Dog(name, breed) {
+          Animal.call(this, name);
+           <!-- // Call the parent constructor -->
+          this.breed = breed;
+        }<!-- // Set the prototype to be an instance of Animal -->
+        Dog.prototype = Object.create(Animal.prototype);<!-- // Set the constructor back to Dog -->
+        Dog.prototype.constructor = Dog;<!-- // Define a method on the prototype -->
+        Dog.prototype.bark = function() {
+          console.log("Woof!");
+        }
+        
+        let myDog = new Dog("Max", "Labrador");
+        myDog.sayHello(); 
+        <!-- // "Hello, I am Max" -->
+        myDog.bark();
+         <!-- // "Woof!" -->
+        </pre>
+
+    <h2>DAY-3</h2>    
+
+</body>
+</html>
