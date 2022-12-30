@@ -9,12 +9,15 @@ h2{
     color: blueviolet;
     text-align: center;
 }
+p,li{
+    font-size: larger;
+}
 sub{
     color: steelblue;
     font-size: larger;
 }
 pre{
-    font-size: medium;
+    font-size:large;
     border: 2px solid black;
     text-align: center;
     color:midnightblue;

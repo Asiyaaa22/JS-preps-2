@@ -198,6 +198,71 @@ Global execution context is created when the JavaScript code is first run. It re
         </pre>
 
     <h2>DAY-3</h2>    
+    <sub>OPERATORS IN JS</sub>
+    <p>There are several operators in JavaScript.Some of them are as follows, <ul>
+      <li type="circle">Arithematic Operators: (+,-,*,/,%)</li>
+      <li type="circle">Comparison operators:((==),(!=),(>),(<),(>=),(<=))</li>
+      <li type="circle">Logical operators: And(&&), or (||), and not (!)</li>
+      <li type="circle">Assignment operator:(+=, -=, *=, /=, and %=)</li>
+      <li type="circle">Conditional (ternary) operator: (?) followed by a colon (:)</li>
+      <li type="circle">Spread operator:(...)</li>
+      <li>Typeof operator</li>
+      <li>Unary operators:(++),(--)</li>
+    </ul></p>
+
+    <sub>ARROW FUNCTIONS</sub>
+    <p>Arrow functions are a concise way to define functions in JavaScript. They are anonymous functions that are defined using the `=>` syntax.</p>
+    <p>If an arrow function takes multiple arguments, they must be enclosed in parentheses:</p>
+    <pre>const square = x => x * x;
+           console.log(square(5));
+
+      const add = (x, y) => x + y;
+         console.log(add(1, 2));
+    </pre>
+    <p>Arrow functions do not have their own this value, so they inherit the this value of the surrounding code. </p>
+    <h4><p>NOTE:Arrow functions cannot be used as constructors, and the new keyword cannot be used with them.</p></h4>
+
+      <sub>UNDEFINED, NOT-DEFINED, NAN</sub>
+      <p>NaN stands for "Not a Number", and it is a special value that represents the result of an invalid mathematical operation.<br>
+        Undefined,which represents the absence of a value due to a lack of assignment.<br>
+        Not defined, indicates that a variable does not exist.
+      </p>
+
+      <sub>CALLBACK HELL </sub>
+      <p>Callback hell, also known as the "Pyramid of Doom," refers to a problem that can occur when writing asynchronous code in JavaScript.<br>
+        It occurs when there are multiple nested callbacks that are called in a series, creating a pyramid-like structure of code. This can make the code difficult to read and maintain.<br>
+        To avoid callback hell, you can use techniques such as Promises, async/await, and functional programming patterns to make the code easier to read and maintain.</p>
+     
+      <sub>SELF-INVOKING FUNCTION</sub>
+      <p>In JavaScript, a self-invoking function is a function that is defined and immediately invoked, without being called by another function or assigned to a variable.</p>  
+      <pre>(function() {
+        console.log('I am self-invoking!');
+      })();
+    </pre>
+    <p>Self-invoking functions are often used to create a private scope for variables and functions. Because the function is immediately invoked, the variables and functions defined inside the function are not accessible outside of the function.</p>
+
+    <sub>SETTIMEOUT()</sub>
+    <p>setTimeout is a JavaScript function that is used to execute a function or code after a specified delay. It is often used to create timed events or to delay the execution of code.</p>
+    <p>setTimeout returns a timeout ID, which is a positive integer value that represents the timer. </p>
+    <pre>setTimeout(function() {
+      console.log('Hello, World!');
+    }, 1000);</pre>
+
+    <h2>DAY-4</h2>    
+    <sub>LOCAL,BLOCK,FUNCTION AND SCOPE CHAIN</sub>
+    <p>LOCAL SCOPE: Local scope refers to the variables and functions that are defined within a function or block of code. <br>
+      FUNCTIONAL SCOPE: Functional scope refers to the variables and functions that are defined within a function. <br>
+      BLOCK SCOPE: Block scope refers to the variables and functions that are defined within a block of code, such as a for loop or an if statement.<br>
+      SCOPE CHAIN: The scope chain refers to the hierarchy of nested scopes that are searched when a variable is accessed.<br>
+      When a variable is accessed, the interpreter first looks for the variable in the current scope. If it is not found, the interpreter looks for the variable in the next outer scope, and so on, until it reaches the global scope. If the variable is not found in any of the scopes, a ReferenceError is thrown.</p>
+
+      <sub>NULL AND UNDEFINED</sub>
+      <p>NULLis a value that represents the intentional absence of a value. <br>
+        UNDEFINED -which represents the absence of a value due to a lack of assignment.</p>
+
+    <sub>EVENT LOOP AND CALL STACK</sub>
+
+    
 
 </body>
 </html>
