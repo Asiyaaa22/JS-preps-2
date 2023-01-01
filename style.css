@@ -10,7 +10,7 @@ h2{
     text-align: center;
 }
 p,li{
-    font-size: larger;
+    font-size: large;
 }
 sub{
     color: steelblue;
@@ -18,11 +18,25 @@ sub{
 }
 pre{
     font-size:large;
-    border: 2px solid black;
-    text-align: center;
+    /* border: 2px solid black; */
+    text-align:center;
     color:midnightblue;
-    background-color: darkkhaki;
+    /* background-color: darkkhaki; */
 }
 sup{
     font-size: x-large;
 }
+img{
+    width: 30%;
+    height: 10%;
+    
+}
+@media  screen and (min-width: 480px) and (max-width:860px ) {
+    body {
+      background-color: rgb(217, 161, 235);
+    }
+    pre{
+        background-color: rgb(236, 180, 94);
+        text-align: justify;
+    }
+  }

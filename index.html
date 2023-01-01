@@ -250,10 +250,10 @@ Global execution context is created when the JavaScript code is first run. It re
 
     <h2>DAY-4</h2>    
     <sub>LOCAL,BLOCK,FUNCTION AND SCOPE CHAIN</sub>
-    <p>LOCAL SCOPE: Local scope refers to the variables and functions that are defined within a function or block of code. <br>
-      FUNCTIONAL SCOPE: Functional scope refers to the variables and functions that are defined within a function. <br>
-      BLOCK SCOPE: Block scope refers to the variables and functions that are defined within a block of code, such as a for loop or an if statement.<br>
-      SCOPE CHAIN: The scope chain refers to the hierarchy of nested scopes that are searched when a variable is accessed.<br>
+    <p>LOCAL SCOPE: Local scope refers to the variables and functions that are defined within a function or block of code. <br><br>
+      FUNCTIONAL SCOPE: Functional scope refers to the variables and functions that are defined within a function. <br><br>
+      BLOCK SCOPE: Block scope refers to the variables and functions that are defined within a block of code, such as a for loop or an if statement.<br><br>
+      SCOPE CHAIN: The scope chain refers to the hierarchy of nested scopes that are searched when a variable is accessed.<br><br>
       When a variable is accessed, the interpreter first looks for the variable in the current scope. If it is not found, the interpreter looks for the variable in the next outer scope, and so on, until it reaches the global scope. If the variable is not found in any of the scopes, a ReferenceError is thrown.</p>
 
       <sub>NULL AND UNDEFINED</sub>
@@ -261,8 +261,100 @@ Global execution context is created when the JavaScript code is first run. It re
         UNDEFINED -which represents the absence of a value due to a lack of assignment.</p>
 
     <sub>EVENT LOOP AND CALL STACK</sub>
+        <p>In JavaScript, the event loop is a mechanism that executes code asynchronously. It works by allowing the browser to execute tasks in the background while the main thread of execution is blocked, and then resuming execution once those tasks are complete.</p>
+          <li>The event loop continuously checks a queue of tasks that need to be executed.</li>
+        <li>When a task is added to the queue, the event loop will execute it in the next iteration.</li>
+        <li>The event loop will block the main thread of execution while it executes the task.</li>
+        <li>Once the task is complete, the event loop will unblock the main thread and continue executing any remaining tasks in the queue.</li>
+        <li>For example, if you wanted to make an HTTP request to a server, you could use the event loop to execute the request asynchronously, allowing the main thread to continue executing other code while the request is being processed. When the response is received, the event loop can then execute a callback function to handle the response.</li>
+      </ul>
+    <p>It's important to note that the call stack has a limited size, and if a function call results in a deep recursion (i.e. a function calling itself repeatedly without ever returning), it can exceed the maximum size of the call stack and cause a "stack overflow" error.</p>
 
+    <sub>PROMISES</sub>
+    <p>Promise is an object that represents the eventual completion or failure of an asynchronous operation.</p>
+    <p>A Promise can be in one of three states: pending, fulfilled, or rejected. When an async operation is initiated, a Promise object is returned, and the operation is performed asynchronously. Once the operation is completed, the Promise is either fulfilled with a resolved value, or rejected with a reason.</p>
+    <pre>
+      function getUserId() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve(1);
+          }, 1000);
+        });
+      }
+      
+      getUserId()
+        .then(id => console.log(`The user's id is ${id}`))
+        .catch(error => console.error(`Error: ${error}`));
+      
+    </pre>
+
+    <sub>PROMISE CHAINING</sub>
+    <p>Promise chaining is a pattern in which the output of a Promise is used as the input for another Promise, allowing you to chain together async operations in a more readable and maintainable way.</p>
     
+    <sub>PURE FUNCTIONS</sub>
+    <p>Pure function is a function that meets the following criteria:
+        <br>
+      It depends only on its input arguments and doesn't produce side effects.
+      It always returns the same output for the same input arguments.</p>
+      <p>Pure functions are predictable and easy to understand, because their behavior is determined solely by their input arguments and they don't have any external dependencies or side effects. This makes them easy to test, debug, and reuse.</p>
+      <pre>function add(x, y) {
+        return x + y;
+      }
+      </pre>
+
+      <h2>DAY-5</h2>
+      <sub>HOISTING</sub>
+      <p>In JavaScript, hoisting is the behavior of moving declarations to the top of the current scope. This means that declarations made using var or let (and even const) will be moved to the top of their respective scope before the code is executed.</p>
+
+      <sub>TEMPORAL DEAD ZONE</sub>
+      <P>The "temporal dead zone" (TDZ) refers to the period of time between when a variable is declared and when it is initialized. During this time, it is illegal to access the variable in any way, including reading its value, assigning to it, or using it in an expression.<BR>
+        he TDZ exists to prevent the use of uninitialized variables and to ensure that variables are properly initialized before they are used. It applies to variables declared with the let and const keywords, but not to variables declared with the var keyword.</P>
+
+        <sub>DOM</sub>
+        <P>DOM stands for Document Object Model. It is a programming interface that allows us to create, change, or remove elements from the document. We can also add events to these elements to make our page more dynamic.<BR>
+          The DOM views an HTML document as a tree of nodes. A node represents an HTML element.</P>
+         <center> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/DOM-model.svg/800px-DOM-model.svg.png" alt="error"></center>
+          
+         <sub>PASS BY VALUE AND PASS BY REFERENCE </sub>
+         <P>In JavaScript, primitive data types (such as numbers, strings, and booleans) are passed by value, while objects are passed by reference.</P>
+        
+         <sub>MAP() AND FILTER()</sub>
+         <p>Higher-order functions in JavaScript that allow you to manipulate arrays in a declarative manner.<br>
+          Some of them are Map(),filter()and so on..<br>
+          map():If we want to perform the same operation/transformation on each element of the array and get back a new array of the same length with the transformed values.  
+          <pre>
+            const numbers =[1,2,3,4,5];
+            const double = function (number){
+              return number*2
+            }
+            const result = numbers.map(double)
+            console.log(result);
+            //output:(5)[1,4,6,8,10]
+          </pre>       
+          
+          <p>filter():Every element of the array is passed to the callback function. On each iteration, if the callback returns true, then that element will be added to the new array, otherwise, it is not added to the new array.<br></p>
+          <pre>
+            const numbers =[1,3,2,6,4,8];
+            const isEven = function(number){
+              return number%2===0
+            }
+            const evnum = numbers.filter(isEven)
+            console.log(evnum);
+            //output:(4)[2,4,6,8]
+          </pre>
+         </p>
+
+         <sub>PURPOSE OF ASYNC/AWAIT</sub>
+         <P>Async/Await makes it easier to write promises. The keyword 'async'before a function makes the function return a promise, always. And the keyword await is used inside async functions, which makes the program wait until the Promise resolves.</P>
+
+         <sub>ASYNC/AWAIT EXAMPLE</sub>
+         <pre>async function getData() {
+          const response = await fetch('https://example.com/data');
+          const data = await response.json();
+          return data;
+        }
+        </pre>
+      
 
 </body>
 </html>
